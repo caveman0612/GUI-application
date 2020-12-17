@@ -2,21 +2,15 @@ from tkinter import *
 
 root =Tk()
 
-topframe = Frame(root)
-topframe.pack()
+label_1 = Label(root, text="Name")
+label_2 = Label(root, text="Password")
+entry_1 = Entry(root)
+entry_2 = Entry(root)
 
-bottomframe = Frame(root)
-bottomframe.pack(side=BOTTOM)
-
-button1 = Button(topframe, text="click here B!", fg="red")
-button2 = Button(topframe, text="click here B2", fg="blue")
-button3 = Button(topframe, text="click here B3", fg="green")
-button4 = Button(bottomframe, text="click here B4", fg="purple")
-
-button1.pack(side=LEFT)
-button2.pack(side=RIGHT)
-button3.pack()
-button4.pack()
+label_1.grid(row=0)
+label_2.grid(row=1)
+entry_1.grid(row=0, column=1)
+entry_2.grid(row=1, column=1)
 
 root.mainloop()
 
