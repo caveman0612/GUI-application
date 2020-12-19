@@ -7,6 +7,17 @@ class KyleButtons:
         frame = Frame(master)
         frame.pack()
 
+        self.printButton = Button(frame, text="print message", command=self.printMessage)
+        self.printButton.pack(side=LEFT)
 
-root = k()
+        self.quitButton = Button(frame, text="quit", command=frame.quit)
+        self.quitButton.pack(side=LEFT)
+
+    def printMessage(self):
+        print("WOW it worked!!!")
+
+
+
+root = Tk()
+b = KyleButtons(root)
 root.mainloop()
