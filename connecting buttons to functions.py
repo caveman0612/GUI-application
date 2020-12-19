@@ -1,25 +1,12 @@
 from tkinter import *
 
-root =Tk()
 
-def leftClick(event):
-    print('left')
+class KyleButtons:
 
-
-def middleClick(event):
-    print("Middle")
+    def __init__(self, master):
+        frame = Frame(master)
+        frame.pack()
 
 
-def rightClick(event):
-    print("Right")
-
-frame = Frame(root, width=300, height=250)
-frame.bind("<Button-1>", leftClick)
-frame.bind("<Button-2>", middleClick)
-frame.bind("<Button-3>", rightClick)
-frame.pack()
-
-
-
+root = k()
 root.mainloop()
-
