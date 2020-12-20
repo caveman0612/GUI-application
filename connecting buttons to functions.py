@@ -1,23 +1,24 @@
 from tkinter import *
 
 
-class KyleButtons:
-
-    def __init__(self, master):
-        frame = Frame(master)
-        frame.pack()
-
-        self.printButton = Button(frame, text="print message", command=self.printMessage)
-        self.printButton.pack(side=LEFT)
-
-        self.quitButton = Button(frame, text="quit", command=frame.quit)
-        self.quitButton.pack(side=LEFT)
-
-    def printMessage(self):
-        print("WOW it worked!!!")
-
-
+def doNothing():
+    print("Ok I love that...")
 
 root = Tk()
-b = KyleButtons(root)
+
+menu = Menu(root)
+root.config(menu=menu)
+
+subMenu = Menu(menu)
+menu.add_cascade(label="File", menu=subMenu)
+subMenu.add_command(label="Now project", command=doNothing)
+subMenu.add_command(label="Now ...", command=doNothing)
+subMenu.add_separator()
+subMenu.add_command(label="Exit", command=Frame.quit)
+
+editMenu = Menu(menu)
+menu.add_cascade(label="edit", menu=editMenu)
+editMenu.add_command(label="do nothing", command=doNothing)
+
+
 root.mainloop()
