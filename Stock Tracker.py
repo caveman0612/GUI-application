@@ -1,4 +1,5 @@
 from tkinter import *
+from Stock_class.py import *
 
 root = Tk()
 
@@ -35,5 +36,8 @@ passw_entry.grid(row=1, column=1)
 #submit button
 submit_button = Button(root, text="submit", command=submit)
 submit_button.grid(row=2, column=1)
+
+
+
 
 root.mainloop()
