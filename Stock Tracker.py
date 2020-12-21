@@ -1,41 +1,39 @@
 from tkinter import *
 
-
-def doNothing():
-    print("Ok I love that...")
-
 root = Tk()
 
-#******** main menu ************
+name_var = StringVar()
+passw_var = StringVar()
 
-menu = Menu(root)
-root.config(menu=menu)
+def submit():
+    name = name_entry.get()
+    password = passw_var.get()
 
-subMenu = Menu(menu)
-menu.add_cascade(label="File", menu=subMenu)
-subMenu.add_command(label="Now project", command=doNothing)
-subMenu.add_command(label="Now ...", command=doNothing)
-subMenu.add_separator()
-subMenu.add_command(label="Exit", command=Frame.quit)
+    print("The name is : " + name)
+    print("The password is : " + password)
 
-editMenu = Menu(menu)
-menu.add_cascade(label="edit", menu=editMenu)
-editMenu.add_command(label="do nothing", command=doNothing)
+    name_var.set("")
+    passw_var.set("")
 
-#*************** the tool bar *************
 
-toolbar = Frame(root, bg="grey")
-insertButt = Button(toolbar, text="cut", command=doNothing)
-insertButt.pack(side=LEFT, padx=2, pady=2)
-printButt = Button(toolbar, text="print", command=doNothing)
-printButt.pack(side=LEFT, padx=2, pady=2)
+#creating a label for company and iserting it on page
+name_label = Label(root, text="company")
+name_label.grid(row=0, column=0)
 
-toolbar.pack(side=TOP, fill=X)
+#company name entry and insert
+name_entry = Entry(root, textvariable = name_var)
+name_entry.grid(row=0, column=1)
 
-#**************** status bar *****************
+#stock price of company label
+passw_label = Label(root, text="stock price")
+passw_label.grid(row=1, column=0)
 
-status = Label(root, text="do nothing", bd=2, relief=SUNKEN, anchor=W)
-status.pack(side=BOTTOM, fill=X)
+#stock price of company entry
+passw_entry = Entry(root, textvariable=passw_var)
+passw_entry.grid(row=1, column=1)
 
+#submit button
+submit_button = Button(root, text="submit", command=submit)
+submit_button.grid(row=2, column=1)
 
 root.mainloop()
