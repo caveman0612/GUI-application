@@ -32,4 +32,10 @@ printButt.pack(side=LEFT, padx=2, pady=2)
 
 toolbar.pack(side=TOP, fill=X)
 
+#**************** status bar *****************
+
+status = Label(root, text="do nothing", bd=2, relief=SUNKEN, anchor=W)
+status.pack(side=BOTTOM, fill=X)
+
+
 root.mainloop()
