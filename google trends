@@ -1,0 +1,63 @@
+from pytrends.request import TrendReq
+import matplotlib.pyplot as plt
+import datetime
+import pandas as pd
+
+Variable_1 = 'Java'
+Variable_2 = 'Python'
+Variable_3 = 'C++'
+Variable_4 = 'C'
+Variable_5 = 'Code'
+
+datetime_object = datetime.datetime.now()
+datetime_object_str = str(datetime_object)
+datetime_object_str1 = datetime_object_str[0:16]
+
+#print(datetime_object_str)
+#print(datetime_object_str1)
+
+###create pytrend object and request data from google trends
+pytrends = TrendReq(hl='en-US')
+
+#   extract data about keywords 5 at a time
+keywords = [Variable_1, Variable_2, Variable_3, Variable_4, Variable_5]
+pytrends.build_payload(keywords, timeframe='now 1-H')
+
+### 'today #-m' 'now #-d'  'now #-H'
+
+### specificy data
+data = pytrends.interest_over_time()
+#print(data)
+
+#data.to_csv(datetime_object_str1 + '.csv')
+
+data = data.drop(columns = 'isPartial')
+
+#var_one = ""
+###change data date
+#for index in data.index:
+ #   data.loc[index, 'date'] = var_one
+    #print(var_one)
+ #   var_one = str(var_one)
+ #   var_one = var_one[5:]
+  #  data.loc[index, 'data'] = var_one
+
+print(data.shape)
+print(data.ndim)
+print(data.head)
+#print(data.tail)
+print(data.describe())
+
+plt.plot(data)
+
+####       add title
+plt.suptitle('programming language')
+plt.xlabel('time')
+plt.ylabel('percent search')
+
+###     add legend
+plt.legend(keywords, loc = 'upper left')
+plt.show()
+
+#          save figure to deskop
+#plt.savefig('programming data')
