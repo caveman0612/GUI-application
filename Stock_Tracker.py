@@ -7,42 +7,23 @@ root = Tk()
 
 
 name_var = StringVar()
-passw_var = StringVar()
-
-
-#************************* CLASSES **********************
-
-
-# class stocks():
-#
-#     def __init__(self, name, price):
-#         self.name = name
-#         self.price = price
+price_var = StringVar()
 
 
 #*************************GUI functions**********************
 
 
-
 def submit():
     name = name_entry.get()
-    password = passw_var.get()
+    price_stock = price_var.get()
 
-    with open('stock_prices.csv', 'a') as file:
+    with open('stock_prices.csv', 'a+', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([name, password])
+        writer.writerow([name, price_stock])
 
+    #resets the entry fields
     name_var.set("")
-    passw_var.set("")
-
-
-
-#***************** CSV writer***********************
-
-
-# with open('stock_prices.csv', 'a', newline='') as file:
-#     writer = csv.writer(file)
-#     writer.writerow([name_var, passw_var])
+    price_var.set("")
 
 
 #************************ GUI compentents********************
@@ -57,12 +38,12 @@ name_entry = Entry(root, textvariable = name_var)
 name_entry.grid(row=0, column=1)
 
 #stock price of company label
-passw_label = Label(root, text="stock price")
-passw_label.grid(row=1, column=0)
+price_label = Label(root, text="stock price")
+price_label.grid(row=1, column=0)
 
 #stock price of company entry
-passw_entry = Entry(root, textvariable=passw_var)
-passw_entry.grid(row=1, column=1)
+price_entry = Entry(root, textvariable=price_var)
+price_entry.grid(row=1, column=1)
 
 #submit button
 submit_button = Button(root, text="submit", command=submit)
