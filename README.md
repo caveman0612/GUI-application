@@ -1,2 +1,4 @@
 # GUI-application
-gui application dads security firm crew
+GUI practice and working on projects
+doing a stock tracker. 
+will eventaully work on analysis 
