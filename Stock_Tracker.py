@@ -1,20 +1,51 @@
 from tkinter import *
-from Stock_class.py import *
+import csv
 
 root = Tk()
 
+#*****************variables**********************
+
+
 name_var = StringVar()
 passw_var = StringVar()
+
+
+#************************* CLASSES **********************
+
+
+# class stocks():
+#
+#     def __init__(self, name, price):
+#         self.name = name
+#         self.price = price
+
+
+#*************************GUI functions**********************
+
+
 
 def submit():
     name = name_entry.get()
     password = passw_var.get()
 
-    print("The name is : " + name)
-    print("The password is : " + password)
+    with open('stock_prices.csv', 'a') as file:
+        writer = csv.writer(file)
+        writer.writerow([name, password])
 
     name_var.set("")
     passw_var.set("")
+
+
+
+#***************** CSV writer***********************
+
+
+# with open('stock_prices.csv', 'a', newline='') as file:
+#     writer = csv.writer(file)
+#     writer.writerow([name_var, passw_var])
+
+
+#************************ GUI compentents********************
 
 
 #creating a label for company and iserting it on page
@@ -38,6 +69,8 @@ submit_button = Button(root, text="submit", command=submit)
 submit_button.grid(row=2, column=1)
 
 
+#****************** END **********************
 
 
 root.mainloop()
+
