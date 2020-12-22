@@ -7,6 +7,7 @@ root = Tk()
 
 
 name_var = StringVar()
+ticker_var = StringVar()
 price_var = StringVar()
 
 
@@ -15,14 +16,16 @@ price_var = StringVar()
 
 def submit():
     name = name_entry.get()
+    ticker = ticker_entry.get()
     price_stock = price_var.get()
 
     with open('stock_prices.csv', 'a+', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([name, price_stock])
+        writer.writerow([name, ticker, price_stock])
 
     #resets the entry fields
     name_var.set("")
+    ticker_var.set("")
     price_var.set("")
 
 
@@ -37,17 +40,25 @@ name_label.grid(row=0, column=0)
 name_entry = Entry(root, textvariable = name_var)
 name_entry.grid(row=0, column=1)
 
+#creating a label for ticker and iserting it on page
+ticker_label = Label(root, text="Ticker Symbol")
+ticker_label.grid(row=1, column=0)
+
+#company name entry and insert
+ticker_entry = Entry(root, textvariable = ticker_var)
+ticker_entry.grid(row=1, column=1)
+
 #stock price of company label
 price_label = Label(root, text="stock price")
-price_label.grid(row=1, column=0)
+price_label.grid(row=2, column=0)
 
 #stock price of company entry
 price_entry = Entry(root, textvariable=price_var)
-price_entry.grid(row=1, column=1)
+price_entry.grid(row=2, column=1)
 
 #submit button
 submit_button = Button(root, text="submit", command=submit)
-submit_button.grid(row=2, column=1)
+submit_button.grid(row=3, column=1)
 
 
 #****************** END **********************
