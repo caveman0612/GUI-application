@@ -6,17 +6,15 @@ def validate_pin(pin):
             counter += 1
         else:
             continue
-    print(counter)
-    print(len(pin))
-    if counter == 4 or counter == 6 and counter == len(pin):
-        # return True
+    if counter == len(pin) and (counter == 4 or counter == 6):
+        return True
         print("True")
     else:
-        # return False
+        return False
         print("false")
 
 
-# validate_pin("1a1145")
-# validate_pin("1254")
-# validate_pin("12d456")
+validate_pin("1a1145")
+validate_pin("1254")
+validate_pin("121456")
 validate_pin("-1234")
