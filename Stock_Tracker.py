@@ -5,16 +5,14 @@ root = Tk()
 
 #*****************variables**********************
 
-api_key_finnhub = bvh6i2v48v6p4qlb8ic0
-api_sandbox = sandbox_bvh6i2v48v6p4qlb8icg
+# api_key_finnhub = bvh6i2v48v6p4qlb8ic0
+# api_sandbox = sandbox_bvh6i2v48v6p4qlb8icg
 
 name_var = StringVar()
 ticker_var = StringVar()
 price_var = StringVar()
 
-
 #*************************GUI functions**********************
-
 
 def submit():
     name = name_entry.get()
