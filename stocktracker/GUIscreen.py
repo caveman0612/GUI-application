@@ -1,5 +1,6 @@
 from tkinter import *
-import csv
+from stocktracker.mySQL import savedatatosql
+
 
 root = Tk()
 
@@ -17,11 +18,14 @@ price_var = StringVar()
 def submit():
     name = name_entry.get()
     ticker = ticker_entry.get()
-    price_stock = price_var.get()
+    TargetPrice = price_var.get()
 
-    with open('stock_prices.csv', 'a+', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([name, ticker, price_stock])
+    savedatatosql(name, ticker, TargetPrice)
+
+
+    # with open('stock_prices.csv', 'a+', newline='') as file:
+    #     writer = csv.writer(file)
+    #     writer.writerow([name, ticker, price_stock])
 
     #resets the entry fields
     name_var.set("")
@@ -49,7 +53,7 @@ ticker_entry = Entry(root, textvariable = ticker_var)
 ticker_entry.grid(row=1, column=1)
 
 #stock price of company label
-price_label = Label(root, text="stock price")
+price_label = Label(root, text="target price")
 price_label.grid(row=2, column=0)
 
 #stock price of company entry
